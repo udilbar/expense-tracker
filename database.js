@@ -10,12 +10,14 @@ const pool = new Pool({    //Add your postgres database credentials here
 });
 
 const getData = (userId) => {
+    console.log(userId)
     return new Promise(function (resolve, reject) {
         pool.query(`SELECT * FROM public."user" where id='${userId}'`, (error, results) => {
             if (error) {
                 reject(error)
             }
-            resolve(results.rows);
+            console.log(results)
+            resolve(results?.rows);
         })
     })
 }
